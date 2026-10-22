@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethnic Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p>Interested in our wholesale collection? Get in touch with us!</p>
+
+    <form id="contactForm">
+        <input type="text" placeholder="Your Name" required>
+
+        <input type="tel" placeholder="Mobile Number" required>
+
+        <input type="email" placeholder="Email Address" required>
+
+        <textarea placeholder="Your Message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+    </form>
+<p id="formMessage" style="color: green; font-weight: bold;"></p>..
+</section>
+
+<footer>
+    <p>© 2026 Ethnic Hub | Traditional Wear Wholesale</p>
+</footer>
+
+<body>
+
+
+    <nav class="navbar">
+        <div class="logo">Ethnic Hub</div>
+
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#products">Products</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    
+<section class="hero">
+    <div class="hero-content">
+        <p class="hero-tagline">CELEBRATE EVERY OCCASION</p>
+        <h1>Tradition Woven with Elegance</h1>
+        <p class="hero-description">
+            Discover beautiful Sarees, Lehengas and Ethnic Wear
+            for your wholesale business.
+        </p>
+        <a href="#products" class="hero-button">
+            Explore Collection →
+        </a>
+    </div>
+</section>
+
+    
+<section class="products" id="products">
+
+    <h2>Our Collection</h2>
+    <p class="section-desc">
+        Discover beautiful traditional wear for your business.
+    </p>
+
+    <div class="product-container">
+
+        <div class="product-card">
+            
+<img src="images/saree.jpeg" alt="Elegant Saree">
+
+           
+<h3>Elegant Saree</h3>
+<p>Beautiful traditional saree for wholesale buyers.</p>
+
+<div class="product-details">
+    <p><strong>Fabric:</strong> Silk</p>
+    <p><strong>Work:</strong> Embroidery</p>
+    <p><strong>Minimum Order:</strong> 10 Pieces</p>
+    <h4>Price: ₹2,499 / piece</h4>
+<button onclick="addToCart('Elegant Saree', 2499, 10)">
+    Add to Cart
+</button>
+</div>
+
+<button onclick="alert('Fabric: Silk | Work: Embroidery | Minimum Order: 10 Pieces | Price: Contact for Price')">
+    View Details
+</button>
+
+        </div>
+
+        <div class="product-card">
+            <img src="images/lehenga.jpeg" alt="Designer Lehenga">
+<h3>Designer Lehenga</h3>
+<p>Beautiful designer lehenga for wholesale buyers.</p>
+
+<div class="product-details">
+    <p><strong>Fabric:</strong> Georgette</p>
+    <p><strong>Work:</strong> Zari Work</p>
+    <p><strong>Minimum Order:</strong> 5 Pieces</p>
+  <h4>Price: ₹1,999 / piece</h4>
+<button onclick="addToCart('Designer Lehenga', 1999, 5)">
+    Add to Cart
+</button>
+</div>
+
+
+<button onclick="alert('Fabric: Georgette | Work: Zari Work | Minimum Order: 5 Pieces | Price: Contact for Price')">
+    View Details
+</button>
+
+
+        </div>
+
+        <div class="product-card">
+            <img src="images/suit.jpeg" alt="Ethnic Suit">
+<h3>Ethnic Suit</h3>
+<p>Elegant ethnic suits for wholesale buyers.</p>
+
+<div class="product-details">
+    <p><strong>Fabric:</strong> Cotton</p>
+    <p><strong>Work:</strong> Printed Design</p>
+    <p><strong>Minimum Order:</strong> 10 Pieces</p>
+   <h4>Price: ₹1,499 / piece</h4>
+<button onclick="addToCart('Ethnic Suit', 1499, 10)">
+    Add to Cart
+</button>
+</div>
+
+<button onclick="alert('Fabric: Cotton | Work: Printed Design | Minimum Order: 10 Pieces | Price: Contact for Price')">
+    View Details
+</button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Shopping Cart -->
+<section class="cart-section" id="cart">
+    <h2>🛒 Your Shopping Cart</h2>
+
+    <div id="cartItems">
+        <p>Your cart is empty.</p>
+    </div>
+
+    <h3>Total Amount: ₹<span id="cartTotal">0</span></h3>
+
+    <button type="button" onclick="showCheckout()">
+        Proceed to Checkout
+    </button>
+</section>
+
+<!-- Checkout Section -->
+<section class="checkout-section" id="checkout" style="display: none;">
+    <h2>Checkout</h2>
+
+    <form id="checkoutForm">
+        <input type="text" id="customerName"
+               placeholder="Full Name" required>
+
+        <input type="tel" id="customerPhone"
+               placeholder="Mobile Number" required>
+
+        <textarea id="customerAddress"
+                  placeholder="Full Delivery Address"
+                  required></textarea>
+
+        <h3>Choose Payment Method</h3>
+
+        <label>
+            <input type="radio" name="payment"
+                   value="COD" required>
+            Cash on Delivery (COD)
+        </label>
+
+        <br>
+
+        <label>
+            <input type="radio" name="payment"
+                   value="Online Payment" required>
+            Online Payment
+        </label>
+
+        <br><br>
+
+        <button type="submit">Place Order</button>
+    </form>
+
+    <p id="orderMessage"></p>
+</section>
+
+<section class="about" id="about">
+    <h2>About Ethnic Hub</h2>
+
+    <p>
+        Ethnic Hub is your destination for traditional Indian ethnic wear.
+        We help wholesale buyers explore beautiful collections and learn
+        about product designs, fabrics, stitching and pricing online.
+    </p>
+
+    <p>
+        Our goal is to make wholesale shopping easier by allowing buyers
+        to explore products before visiting in person.
+    </p>
+</section>
+
+<script>
+
+let cart = [];
+
+function addToCart(name, price, minOrder) {
+    const existing = cart.find(item => item.name === name);
+
+    if (existing) {
+        existing.quantity += minOrder;
+    } else {
+        cart.push({
+            name: name,
+            price: price,
+            quantity: minOrder,
+            minOrder: minOrder
+        });
+    }
+
+    displayCart();
+    document.getElementById("cart").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+function displayCart() {
+    const cartItems = document.getElementById("cartItems");
+    const cartTotal = document.getElementById("cartTotal");
+
+    if (cart.length === 0) {
+        cartItems.innerHTML = "<p>Your cart is empty.</p>";
+        cartTotal.textContent = "0";
+        return;
+    }
+
+    cartItems.innerHTML = "";
+
+    cart.forEach((item, index) => {
+        cartItems.innerHTML += `
+            <div class="cart-item">
+                <h3>${item.name}</h3>
+                <p>Price per piece: ₹${item.price}</p>
+                <p>Minimum order: ${item.minOrder} pieces</p>
+                <label>Quantity:</label>
+                <input type="number"
+                    min="${item.minOrder}"
+                    step="${item.minOrder}"
+                    value="${item.quantity}"
+                    onchange="updateQuantity(${index}, this.value)">
+                <p>Subtotal: ₹${item.price * item.quantity}</p>
+                <button type="button"
+                    onclick="removeItem(${index})">
+                    Remove
+                </button>
+            </div>
+            <hr>
+        `;
+    });
+
+    cartTotal.textContent = cart.reduce(
+        (total, item) => total + item.price * item.quantity, 0
+    ).toLocaleString("en-IN");
+}
+
+function updateQuantity(index, value) {
+    const quantity = Number(value);
+    const item = cart[index];
+
+    if (!Number.isInteger(quantity) || quantity < item.minOrder ||
+        quantity % item.minOrder !== 0) {
+        alert("Quantity must be a multiple of " + item.minOrder);
+        displayCart();
+        return;
+    }
+
+    item.quantity = quantity;
+    displayCart();
+}
+
+function removeItem(index) {
+    cart.splice(index, 1);
+    displayCart();
+}
+
+function showCheckout() {
+    if (cart.length === 0) {
+        alert("Please add a product to your cart first.");
+        return;
+    }
+
+    document.getElementById("checkout").style.display = "block";
+    document.getElementById("checkout").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+document.getElementById("checkoutForm").addEventListener("submit",
+    function(event) {
+        event.preventDefault();
+
+        if (cart.length === 0) {
+            alert("Your cart is empty.");
+            return;
+        }
+
+        const payment = document.querySelector(
+            'input[name="payment"]:checked'
+        ).value;
+
+        if (payment === "Online Payment") {
+            document.getElementById("orderMessage").textContent =
+                "Online payment is not connected yet. Please choose COD.";
+            return;
+        }
+
+        const name = document.getElementById("customerName").value;
+        const total = cart.reduce(
+            (sum, item) => sum + item.price * item.quantity, 0
+        );
+
+        document.getElementById("orderMessage").textContent =
+            "Thank you, " + name + "! Your COD order total is ₹" +
+            total.toLocaleString("en-IN") +
+            ". This demo has not sent your order to the business.";
+
+        cart = [];
+        displayCart();
+        this.reset();
+    }
+);
+
+document.getElementById("contactForm").addEventListener("submit",
+    function(event) {
+        event.preventDefault();
+        document.getElementById("formMessage").textContent =
+            "Thank you! Your message has been received.";
+        this.reset();
+    }
+);
+
+</script>
+</body>
+</html>
+
+
+</body>
+
+</html>
